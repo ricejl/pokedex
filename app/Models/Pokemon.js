@@ -8,7 +8,7 @@ export default class Pokemon {
     this.types = data.types;
   }
 
-  get listTemplate() {
+  get Template() {
     return this.name;
   }
 }

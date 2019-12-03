@@ -1,5 +1,5 @@
-import Store from "../store.js";
 import store from "../store.js";
+import FreePokemon from "../Models/FreePokemon.js";
 
 let _pokemonApi = axios.create({
   baseURL: "https://pokeapi.co/api/v2",
@@ -10,7 +10,8 @@ class PokemonService {
 
   async findPokemonAsync() {
     let res = await _pokemonApi.get("pokemon?limit=20");
-    store.commit("pokemon", res.data);
+    let freePokemon = res.data.results.map(p => new FreePokemon(p));
+    store.commit("freePokemon", freePokemon);
   }
 }
 

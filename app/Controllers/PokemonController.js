@@ -2,15 +2,18 @@ import PokemonService from "../Services/PokemonService.js";
 import store from "../store.js";
 
 //Private
-function _draw() {
-  let pokemon = store.State.pokemon;
-  console.log(pokemon);
+function _drawFreePokemon() {
+  let template = "";
+  let pokemon = store.State.freePokemon;
+  console.log("free pokemon:", pokemon);
+  pokemon.forEach(p => (template += p.FreePokemonTemplate));
+  document.getElementById("free-pokemon").innerHTML = template;
 }
 
 //Public
 export default class PokemonController {
   constructor() {
-    store.subscribe("pokemon", _draw);
+    store.subscribe("freePokemon", _drawFreePokemon);
   }
 
   async findPokemonAsync() {
