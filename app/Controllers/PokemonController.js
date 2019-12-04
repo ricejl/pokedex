@@ -10,10 +10,18 @@ function _drawFreePokemon() {
   document.getElementById("free-pokemon").innerHTML = template;
 }
 
+function _drawSelectedPokemon() {
+  let template = "";
+  let pokemon = store.State.pokemon;
+  pokemon.forEach(p => (template = p.Template));
+  document.getElementById("selected-pokemon").innerHTML = template;
+}
+
 //Public
 export default class PokemonController {
   constructor() {
     store.subscribe("freePokemon", _drawFreePokemon);
+    store.subscribe("pokemon", _drawSelectedPokemon);
   }
 
   async findPokemonAsync() {

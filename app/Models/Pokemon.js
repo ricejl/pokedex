@@ -9,6 +9,10 @@ export default class Pokemon {
   }
 
   get Template() {
-    return this.name;
+    return /*html*/ `
+      <img id="pokemon-img" src="${this.img}" alt="" />
+      <h3>${this.name}</h3>
+      <p>${this.height} m, ${this.weight} kg</p>
+      `;
   }
 }
