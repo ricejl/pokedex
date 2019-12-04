@@ -42,4 +42,9 @@ export default class PokemonController {
       console.error(e);
     }
   }
+
+  catchPokemon(id) {
+    event.preventDefault();
+    PokemonService.catchPokemon(id);
+  }
 }

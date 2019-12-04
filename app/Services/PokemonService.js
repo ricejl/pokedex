@@ -12,6 +12,11 @@ let _pokemonDetailApi = axios.create({
   timeout: 3000
 });
 
+let _sandBox = axios.create({
+  baseURL: "https://bcw-sandbox.herokuapp.com/api/Jenny/pokemon",
+  timeout: 3000
+});
+
 class PokemonService {
   constructor() {}
 
@@ -26,6 +31,22 @@ class PokemonService {
     console.log(res);
     let selectedPokemon = [res.data].map(p => new Pokemon(p));
     store.commit("pokemon", selectedPokemon);
+  }
+
+  catchPokemon(id) {
+    console.log(id);
+    let desiredPokemon = store.State.pokemon.find(p => p._id == id);
+    console.log("one to catch:", desiredPokemon);
+
+    _sandBox
+      .post("", desiredPokemon)
+      .then(res => {
+        let pokemon = [...store.State.pokemon, desiredPokemon];
+        store.commit("pokemon", pokemon);
+      })
+      .catch(e => {
+        throw e;
+      });
   }
 }
 
