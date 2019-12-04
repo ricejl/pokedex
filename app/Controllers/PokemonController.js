@@ -24,4 +24,14 @@ export default class PokemonController {
       console.error(e);
     }
   }
+
+  async viewPokemonAsync(url) {
+    event.preventDefault();
+    console.log(url);
+    try {
+      await PokemonService.viewPokemonAsync(url);
+    } catch (e) {
+      console.error(e);
+    }
+  }
 }
