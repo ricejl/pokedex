@@ -13,6 +13,7 @@ export default class Pokemon {
       <img id="pokemon-img" src="${this.img}" alt="" />
       <h3>${this.name}</h3>
       <p>${this.height} m, ${this.weight} kg</p>
+      <button class="btn btn-success">Catch!</button>
       `;
   }
 }

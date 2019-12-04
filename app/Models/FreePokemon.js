@@ -6,6 +6,6 @@ export default class FreePokemon {
 
   get FreePokemonTemplate() {
     return /*html*/ `
-    <button onclick="app.pokemonController.viewPokemonAsync('${this.url}')">${this.name}</button>`;
+    <button onclick="app.pokemonController.viewPokemonAsync('${this.url}')" class="btn mb-1">${this.name}</button>`;
   }
 }
